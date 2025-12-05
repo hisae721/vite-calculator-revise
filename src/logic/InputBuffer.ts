@@ -110,6 +110,9 @@ export class InputBuffer {
         return s.length < 8;
     }
 
+    /**
+     * まだ何も入力していない時だけ、-を先頭につける
+     */
     public pushMinus(): void {
     if (this.value === "") {
         this.value = "-";
