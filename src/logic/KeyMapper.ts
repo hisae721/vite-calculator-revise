@@ -13,8 +13,8 @@ export class KeyMapper {
 
     constructor() {
         this.keyMap = new Map<string, KeyToken>();
-        for(let d=0;d<=9;d++){
-            this.keyMap.set(String(d),{ kind: "digit",value: d})
+        for (let d = 0; d <= 9; d++) {
+            this.keyMap.set(String(d), { kind: "digit", value: d })
         }
         this.keyMap.set(".", { kind: "decimal" });
         this.keyMap.set("+", { kind: "op", value: Operation.Add });
@@ -36,6 +36,9 @@ export class KeyMapper {
      */
     public resolve(target: HTMLElement): KeyToken | null {
         const value = target.textContent;
+        if (value === null) {
+            return null;
+        }
         const result = this.keyMap.get(value);
         if (result) {
             return result;
